@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <div>
+    <strong>Title:</strong>
+  </div>
+  
+  <div>
+    <%= @post.title %>
+  </div>
+  
+  <div>
+    <strong>Content:</strong>
+  </div>
+  <div>
+    <%= @post.content %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary", name: "btnEdit" %> |
+<%= link_to 'Back', posts_path, class: "btn btn-light", name: "btnBack" %>

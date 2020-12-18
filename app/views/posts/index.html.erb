@@ -1,0 +1,30 @@
+<h1>Posts</h1>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   <% @id = 0 %>
+    <% @posts.each do |post| %>
+      <% @id+=1 %>
+      <tr scope="row">
+        <td><%= post.title %></td>
+        <td><%= post.author&.email %></td>
+        <td><%= image_tag Gravatar.new(post.author.email).image_url %></td>
+        <td><%= link_to 'Show', post ,class: "btn btn-primary btn-sm", name: "btnShow #{@id}"%></td>
+        <td><%= link_to 'Edit', edit_post_path(post), class: "btn btn-light", name: "btnEdit #{@id}" %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, class: "btn btn-danger", name: "btnDelete #{@id}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%== pagy_bootstrap_nav(@pagy) %>
+<%= link_to 'New Post', new_post_path, class: "btn btn-success", name: "btnNewPost" , value: "New Post"%>
